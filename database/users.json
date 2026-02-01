@@ -1,0 +1,11 @@
+{
+    "ultimo_id": 1,
+    "usuarios": [
+        {
+            "id": 1,
+            "nome": "Luiz",
+            "email": "luizh.dev7@gmail.com",
+            "password": "$argon2id$v=19$m=65536,t=3,p=4$G2MMIQSAkDLmPGcsBcCYEw$Ll4j0Y9g1QCxLAubmePblRnXuuTQf0ybEVuwPdlf9O8"
+        }
+    ]
+}
