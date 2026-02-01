@@ -1,17 +1,20 @@
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel
-from utils.users import criar_usuario
+from pydantic import BaseModel, EmailStr
+from utils.users import criar_usuario, buscar_usuario_por_email
 
 router = APIRouter()
 
 class UsuarioRequest(BaseModel):
     nome: str
-    email: str
+    email: EmailStr  
     password: str
 
 @router.post("/usuarios")
 def cadastro_usuario(usuario: UsuarioRequest):
-    novo_usuario = criar_usuario(usuario.nome, usuario.email, usuario.password)
-    if novo_usuario["id"] != 1:  # se o email já existia
+    
+    if buscar_usuario_por_email(usuario.email):
         raise HTTPException(status_code=400, detail="Email já cadastrado")
+
+    
+    novo_usuario = criar_usuario(usuario.nome, usuario.email, usuario.password)
     return {"msg": f"Usuário {novo_usuario['nome']} criado com sucesso!", "id": novo_usuario["id"]}
