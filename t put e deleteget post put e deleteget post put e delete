@@ -1,0 +1,35 @@
+[33mcommit c092479a891c5589d257d3f3d6b4bf859cff2433[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Luiz <luizh.dev7@gmail.com>
+Date:   Sat Jan 31 21:49:33 2026 -0300
+
+    get post put e delete funcionando e testado
+
+[33mcommit e53426767dc0eb1fb1608790aa271ef867f2c53e[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Luiz <luizh.dev7@gmail.com>
+Date:   Sat Jan 31 11:55:30 2026 -0300
+
+    Subindo github
+
+[33mcommit 4ac886d56f586a56f3e50b6880c29ddb1a590b35[m
+Author: Luiz <luizh.dev7@gmail.com>
+Date:   Sat Jan 31 11:47:03 2026 -0300
+
+    rodando oficial o fastapi kk
+
+[33mcommit 197cc05b9301da85baa61e8af7fd559db42256df[m
+Author: Luiz <luizh.dev7@gmail.com>
+Date:   Wed Jan 28 23:19:56 2026 -0300
+
+    tabelas criadas, banco
+
+[33mcommit db038929d16fd2a76cdab50c0600409ab43a5e46[m
+Author: Luiz <luizh.dev7@gmail.com>
+Date:   Wed Jan 28 21:48:30 2026 -0300
+
+    server rodando
+
+[33mcommit 8f466e618166e935439fccadb95fc11e525e571a[m
+Author: Luiz <luizh.dev7@gmail.com>
+Date:   Wed Jan 7 22:11:15 2026 -0300
+
+    Primeiro commit do projeto, com readme pronto. Idéia do projeto e objetivo.
