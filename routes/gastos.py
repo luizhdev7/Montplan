@@ -25,3 +25,37 @@ def criar_gasto(gasto: GastoCreate):
     session.close()
     return novo_gasto
  
+ 
+ 
+@router.put("/{gasto_id}", response_model=GastoResponse)
+def atualizar_gasto(gasto_id: int, gasto_atualizado: GastoCreate):
+    session = SessionLocal()
+    
+    gasto = session.query(Gasto).filter(Gasto.id == gasto_id).first()
+    if not gasto:
+        session.close()
+        raise HTTPException(status_code=404, detail="Gasto não encontrado")
+    
+    for key, value in gasto_atualizado.model_dump().items():
+        setattr(gasto, key, value)
+    
+    session.commit()
+    session.refresh(gasto)
+    session.close()
+    return gasto
+
+
+
+@router.delete("/{gasto_id}", response_model=dict)
+def deletar_gasto(gasto_id: int):
+    session = SessionLocal()
+    
+    gasto = session.query(Gasto).filter(Gasto.id == gasto_id).first()
+    if not gasto:
+        session.close()
+        raise HTTPException(status_code=404, detail="Gasto não encontrado")
+    
+    session.delete(gasto)
+    session.commit()
+    session.close()
+    return {"detail": "Gasto deletado com sucesso"}
