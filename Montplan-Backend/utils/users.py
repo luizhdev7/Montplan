@@ -6,11 +6,23 @@ from passlib.context import CryptContext
 CAMINHO = os.path.join("database", "users.json")
 pwd_context = CryptContext(schemes=["argon2"], deprecated="auto")
 
-def buscar_usuario_por_email(email: str):
-    """Retorna o usuário se existir, senão None"""
-    if not os.path.exists(CAMINHO):
-        return None
 
+def _garantir_arquivo():
+    if not os.path.exists(CAMINHO):
+        os.makedirs("database", exist_ok=True)
+        with open(CAMINHO, "w") as f:
+            json.dump({"ultimo_id": 0, "usuarios": []}, f, indent=4)
+
+
+def listar_usuarios():
+    _garantir_arquivo()
+    with open(CAMINHO, "r") as f:
+        dados = json.load(f)
+        return dados["usuarios"]
+
+
+def buscar_usuario_por_email(email: str):
+    _garantir_arquivo()
     with open(CAMINHO, "r") as f:
         dados = json.load(f)
         for u in dados["usuarios"]:
@@ -20,13 +32,10 @@ def buscar_usuario_por_email(email: str):
 
 
 def criar_usuario(nome: str, email: str, password: str):
-    """Cria um novo usuário apenas se o email não existir"""
-    if buscar_usuario_por_email(email):
-        return None  # Indica que o usuário já existe
+    _garantir_arquivo()
 
-    if not os.path.exists(CAMINHO):
-        with open(CAMINHO, "w") as f:
-            json.dump({"ultimo_id": 0, "usuarios": []}, f)
+    if buscar_usuario_por_email(email):
+        return None
 
     with open(CAMINHO, "r+") as f:
         dados = json.load(f)

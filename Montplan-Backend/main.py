@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+from fastapi.middleware.cors import CORSMiddleware
 
 from routes.usuarios import router as usuarios_router
 from routes.gastos import router as gastos_router
@@ -8,6 +8,15 @@ from routes.login import router as login_router
 
 
 app = FastAPI(title="Montplan API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 
 @app.get("/")
