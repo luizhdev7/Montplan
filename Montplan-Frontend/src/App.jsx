@@ -1,31 +1,41 @@
 import { useState, useEffect } from 'react'
-import api from './utils/api' // deixa como você tinha
+import api from './utils/api' // seu axios configurado
 
 function App() {
   const [count, setCount] = useState(0)
   const [usuarios, setUsuarios] = useState([])
 
   useEffect(() => {
-    api.get('/usuarios')
-      .then(res => setUsuarios(res.data)) // salvar no estado
-      .catch(err => console.error(err))
+    // Buscar usuários do backend
+    const fetchUsuarios = async () => {
+      try {
+        const res = await api.get('/usuarios') // endpoint correto
+        setUsuarios(res.data) // salva no estado
+      } catch (err) {
+        console.error("Erro ao buscar usuários:", err)
+      }
+    }
+
+    fetchUsuarios()
   }, [])
 
   return (
-    <>
-      <h1>Vite + React</h1>
+    <div>
+      <h1>Montplan - Usuários</h1>
+      
       <div className="card">
-        <button onClick={() => setCount((c) => c + 1)}>
+        <button onClick={() => setCount(c => c + 1)}>
           count is {count}
         </button>
+
         <p>Usuários do backend:</p>
         <ul>
           {usuarios.map(u => (
-            <li key={u.id}>{u.nome}</li>
+            <li key={u.id}>{u.nome}</li> // usa "nome" se o backend retorna esse campo
           ))}
         </ul>
       </div>
-    </>
+    </div>
   )
 }
 
