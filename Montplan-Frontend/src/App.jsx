@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react'
 import api from './utils/api' // seu axios configurado
 
+
+
+
+
 function App() {
   const [count, setCount] = useState(0)
   const [usuarios, setUsuarios] = useState([])
 
+  console.log("Montplan frontend rodando 🚀");
+  
+  
   useEffect(() => {
     // Buscar usuários do backend
     const fetchUsuarios = async () => {
@@ -38,5 +45,8 @@ function App() {
     </div>
   )
 }
+
+
+
 
 export default App
