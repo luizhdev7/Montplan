@@ -1,11 +1,17 @@
 {
-    "ultimo_id": 1,
+    "ultimo_id": 2,
     "usuarios": [
         {
             "id": 1,
             "nome": "Luiz",
             "email": "luizh.dev7@gmail.com",
             "password": "$argon2id$v=19$m=65536,t=3,p=4$SMk5p3SutTZmLAWA8F4rxQ$haYmXx3OdF96p4PBE1oOWpfLaDOSLCcVAdPa0wAPymE"
+        },
+        {
+            "id": 2,
+            "nome": "Ethan",
+            "email": "ethanlindo07@gmail.com",
+            "password": "$argon2id$v=19$m=65536,t=3,p=4$CSHEGOOcs1Yq5ZzzHkPI+Q$7MSAPYsQEQw23vgx9Q9Rt/fKdYxn8NJH+ZX919zRnGo"
         }
     ]
 }
